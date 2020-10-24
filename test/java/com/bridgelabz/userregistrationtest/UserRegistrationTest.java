@@ -48,4 +48,32 @@ public class UserRegistrationTest {
         Assert.assertFalse(validation);
     }
 
+    @Test
+    public void givenPhoneNumber_WhenValid_ShouldReturnTrue() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean validation = userRegistration.validatePhoneNumber("91 9591266655");
+        Assert.assertTrue(validation);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenNoCountryCode_ShouldReturnFalse() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean validation = userRegistration.validatePhoneNumber(" 9591266655");
+        Assert.assertFalse(validation);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenNoSpace_ShouldReturnFalse() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean validation = userRegistration.validatePhoneNumber("919591266655");
+        Assert.assertFalse(validation);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenLessThanTenDigits_ShouldReturnFalse() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean validation = userRegistration.validatePhoneNumber("91 959126665");
+        Assert.assertFalse(validation);
+    }
+
 }
