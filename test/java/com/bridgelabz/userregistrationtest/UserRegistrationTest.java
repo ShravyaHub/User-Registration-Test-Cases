@@ -79,7 +79,7 @@ public class UserRegistrationTest {
     @Test
     public void givenPassword_WhenValid_ShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean validation = userRegistration.validatePassword("shravyak");
+        boolean validation = userRegistration.validatePassword("Shravyak");
         Assert.assertTrue(validation);
     }
 
@@ -90,5 +90,11 @@ public class UserRegistrationTest {
         Assert.assertFalse(validation);
     }
 
+    @Test
+    public void givenPassword_WhenNoUppercaseLetters_ShouldReturnFalse() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean validation = userRegistration.validatePassword("shravyak");
+        Assert.assertFalse(validation);
+    }
 
 }
